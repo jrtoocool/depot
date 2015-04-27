@@ -15,12 +15,19 @@
 		<%= @page_title || "Pragmatic Bookshelf" %>
 	</div>
 	<div id="columns">
-		<div id="side"> <ul>
+		<div id="side"> 
+			<div id="cart">
+				<%= render @cart %>
+			</div>
+			<ul>
 			<li><a href="http://www....">Home</a></li>
 			<li><a href="http://www..../faq">Questions</a></li>
 			<li><a href="http://www..../news">News</a></li>
 			<li><a href="http://www..../contact">Contact</a></li>
 			<li><a> <%= Time.now %> </a></li>
+			<% if request.original_url == "http://localhost:3000/" %>
+			<li><b id="counter">Catalog acceced <%= pluralize session[:counter], 'time' %></b></li>
+			<% end %>
 			</ul>
 		</div>
 		<div id="main">
